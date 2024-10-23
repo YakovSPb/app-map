@@ -5,15 +5,8 @@ interface NodeWrapperProps {
 }
 
 const NodeWrapper: FC<NodeWrapperProps> = ({ children }) => {
-  return <div style={nodeStyle}>{children}</div>;
+  return <div className='p-2 border border-black rounded bg-white w-[190px]'>{children}</div>;
 };
 
-const nodeStyle = {
-  padding: '10px',
-  border: '1px solid #000',
-  borderRadius: '4px',
-  backgroundColor: '#fff',
-  width: '150px',
-};
 
 export default NodeWrapper;

@@ -24,13 +24,13 @@ const ProcessNode = ({ data }: ProcessNodeProps) => {
       <Handle
         type="target"
         position={Position.Top}
-        style={{ background: '#555' }}
+        className='bg-gray-600'
       />
 
       <Handle
         type="source"
         position={Position.Bottom}
-        style={{ background: '#555' }}
+        className='bg-gray-600'
       />
     </NodeWrapper>
   );

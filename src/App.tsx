@@ -18,6 +18,7 @@ import sendRequest from './api/sendRequest';
 import { CustomEdge, CustomNode } from './components/types/types';
 import { PROCESS, SUBPROCESS } from './constants/constants';
 import RootWrapper from './components/_ui/RootWrapper/RootWrapper';
+import './index.css';
 
 const nodeTypes = {
   process: ProcessNode,
@@ -60,12 +61,12 @@ export default function App() {
         <MiniMap nodeColor={() => '#00ff00'} />
         <Controls />
       </ReactFlow>
-      <div style={{ position: 'absolute', top: 20, right: 20 }}>
+      <div className="absolute top-5 right-5" >
       <Button addProcess={() => addNode('process', PROCESS)} text="Добавить Процесс" />
       <Button addProcess={() => addNode('subprocess', SUBPROCESS)} text="Добавить Подпроцесс 1" />
       <Button addProcess={() => addNode('subprocess', SUBPROCESS)} text="Добавить Подпроцесс 2" />
       </div>
-      <div style={{ position: 'absolute', bottom: 20, right: 20 }}>
+      <div className="absolute bottom-5 right-5">
         <Button addProcess={() => sendRequest(nodes)} text="Отправить запрос" />
       </div>
     </RootWrapper>

@@ -1,23 +1,16 @@
-import {  FC } from 'react';
+import { FC } from 'react';
 
 interface ButtonProps {
-    text: string
-    addProcess: () => void
+  text: string
+  addProcess: () => void
 }
 
-const Button:FC<ButtonProps> = ({text, addProcess}) => {
-    return <button style={buttonStyle} onClick={addProcess}>{text}</button>
-  };
+const Button: FC<ButtonProps> = ({ text, addProcess }) => {
+  return <button
+    className="m-1.5 p-2.5 px-3.75 bg-white border-none rounded cursor-pointer shadow-md"
+    onClick={addProcess}
+  >{text}</button>
+};
 
-  const buttonStyle = {
-    margin: '5px',
-    padding: '10px 15px',
-    backgroundColor: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-  };
-  
 
-  export default Button
+export default Button

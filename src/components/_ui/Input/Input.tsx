@@ -10,17 +10,9 @@ const Input: FC<InputProps> = ({ value, onChange }) => {
     <input
       value={value}
       onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
-      style={inputStyle}
+      className="w-[170px] mb-1.5 p-1 border border-gray-300 rounded"
     />
   );
-};
-
-const inputStyle = {
-  width: '140px',
-  marginBottom: '5px',
-  padding: '5px',
-  border: '1px solid #ccc',
-  borderRadius: '4px',
 };
 
 export default Input;

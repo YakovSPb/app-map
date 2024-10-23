@@ -5,14 +5,7 @@ interface RootWrapper {
 }
 
 const RootWrapper: FC<RootWrapper> = ({ children }) => {
-  return <div style={rootStyle}>{children}</div>;
+  return <div className='h-screen w-screen bg-blue-600'>{children}</div>;
 };
-
-const rootStyle = {
-  height: '100vh',
-  width: '100vw',
-  backgroundColor: '#0d6efd',
-};
-
 
 export default RootWrapper;
