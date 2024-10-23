@@ -17,6 +17,8 @@ import SubprocessNode from './components/SubprocessNode/SubprocessNode';
 import Button from './components/_ui/Button/Button';
 import sendRequest from './api/sendRequest';
 import { CustomEdge, CustomNode } from './components/types/types';
+import { PROCESS, SUBPROCESS } from './constants/constants';
+import RootWrapper from './components/_ui/RootWrapper/RootWrapper';
 
 const nodeTypes = {
   process: ProcessNode,
@@ -33,32 +35,18 @@ export default function App() {
     [setEdges]
   );
 
-  const addProcessNode = () => {
+  const addNode = useCallback((type: 'process' | 'subprocess', data: any) => {
     const newNode: CustomNode = {
-      id: `process-${nodes.length + 1}`,
-      type: 'process',
+      id: `${type}-${nodes.length + 1}`,
+      type,
       position: { x: Math.random() * 400, y: Math.random() * 400 },
-      data: { label1: 'Process Label 1', label2: 'Process Label 2' },
+      data,
     };
     setNodes((nds: CustomNode[]) => nds.concat(newNode));
-  };
-
-  const addSubprocessNode = () => {
-    const newNode: CustomNode = {
-      id: `subprocess-${nodes.length + 1}`,
-      type: 'subprocess',
-      position: { x: Math.random() * 400, y: Math.random() * 400 },
-      data: {
-        label1: 'Subprocess Label 1',
-        label2: 'Subprocess Label 2',
-        label3: 'Subprocess Label 3',
-      },
-    };
-    setNodes((nds: CustomNode[]) => nds.concat(newNode));
-  };
+  }, [nodes]);
 
   return (
-    <div style={rootStyle}>
+    <RootWrapper>
       <ReactFlow
         nodes={nodes}
         nodeTypes={nodeTypes}
@@ -74,19 +62,14 @@ export default function App() {
         <Controls />
       </ReactFlow>
       <div style={{ position: 'absolute', top: 20, right: 20 }}>
-        <Button addProcess={addProcessNode} text="Добавить Процесс" />
-        <Button addProcess={addSubprocessNode} text="Добавить Подпроцесс 1" />
-        <Button addProcess={addSubprocessNode} text="Добавить Подпроцесс 2" />
+      <Button addProcess={() => addNode('process', PROCESS)} text="Добавить Процесс" />
+      <Button addProcess={() => addNode('subprocess', SUBPROCESS)} text="Добавить Подпроцесс 1" />
+      <Button addProcess={() => addNode('subprocess', SUBPROCESS)} text="Добавить Подпроцесс 2" />
       </div>
       <div style={{ position: 'absolute', bottom: 20, right: 20 }}>
         <Button addProcess={() => sendRequest(nodes)} text="Отправить запрос" />
       </div>
-    </div>
+    </RootWrapper>
   );
 }
 
-const rootStyle = {
-  height: '100vh',
-  width: '100vw',
-  backgroundColor: '#0d6efd',
-};
