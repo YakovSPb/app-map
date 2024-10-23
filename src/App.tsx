@@ -1,3 +1,4 @@
+// App.tsx
 import { useCallback } from 'react';
 import {
   ReactFlow,
@@ -7,8 +8,6 @@ import {
   useEdgesState,
   type OnConnect,
   MiniMap,
-  Edge,
-  Node,
   Connection,
 } from '@xyflow/react';
 
@@ -17,28 +16,7 @@ import ProcessNode from './components/ProcessNode/ProcessNode';
 import SubprocessNode from './components/SubprocessNode/SubprocessNode';
 import Button from './components/_ui/Button/Button';
 import sendRequest from './api/sendRequest';
-
-interface ProcessNodeData {
-  label1: string;
-  label2: string;
-}
-
-interface SubprocessNodeData extends ProcessNodeData {
-  label3: string;
-}
-
-interface ProcessNodeData extends Record<string, unknown> {
-  label1: string;
-  label2: string;
-}
-
-interface SubprocessNodeData extends ProcessNodeData {
-  label3: string;
-}
-
-type CustomNode = Node<ProcessNodeData | SubprocessNodeData>;
-
-type CustomEdge = Edge;
+import { CustomEdge, CustomNode } from './components/types/types';
 
 const nodeTypes = {
   process: ProcessNode,
