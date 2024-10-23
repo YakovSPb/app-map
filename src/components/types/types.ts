@@ -18,7 +18,7 @@ export type CustomEdge = Edge;
 
 export interface NodeData {
     id: string;
-    type: string; // Тип узла не должен быть undefined
+    type: string; 
     position: { x: number; y: number };
-    data: Record<string, unknown>; // Можно уточнить тип данных, если известна структура
+    data: Record<string, unknown>;
 }
